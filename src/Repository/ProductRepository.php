@@ -18,4 +18,14 @@ class ProductRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Product::class);
     }
+
+    /**
+     * Find all products sort by name ascending.
+     *
+     * @return Product[]
+     */
+    public function findAllSortByName()
+    {
+        return $this->findBy(array(), array('name' => 'ASC'));
+    }
 }
