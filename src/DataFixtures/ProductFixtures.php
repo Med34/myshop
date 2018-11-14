@@ -8,6 +8,11 @@ use Doctrine\Common\Persistence\ObjectManager;
 
 class ProductFixtures extends Fixture
 {
+    /**
+     * Generate 12 products with random price.
+     *
+     * @param ObjectManager $manager
+     */
     public function load(ObjectManager $manager)
     {
         for ($i = 1; $i <= 12; $i++) {

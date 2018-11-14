@@ -13,7 +13,7 @@
                             <div class="card-body">
                                 <h4 class="card-title">{{ product.name }}</h4>
                                 <p class="card-text">Price: {{ product.price }} $</p>
-                                <a href="#" class="card-link">View details</a>
+                                <a href="{{ path('product_show', { 'id' : product.id }) }}" class="card-link">View details</a>
                             </div>
                         </div>
                     </div>

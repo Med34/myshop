@@ -23,6 +23,10 @@ class ProductController extends AbstractController
     }
 
     /**
+     * @param $id Product identifier
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     *
      * @Route("/product/{id}", name="product_show")
      */
     public function show($id)
