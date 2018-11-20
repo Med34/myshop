@@ -88,4 +88,19 @@ class CartController extends AbstractController
 
         return $this->redirectToRoute('cart.index');
     }
+
+    /**
+     * @Route("/cart/clear", name="cart.clear")
+     *
+     * @param CartManager $cartManager The service to manage cart.
+     *
+     * @return Response
+     */
+    public function clearCart(CartManager $cartManager) : Response
+    {
+        $cartManager->setCart(array());
+        $this->addFlash('success', 'Your cart is empty');
+
+        return $this->redirectToRoute('cart.index');
+    }
 }
