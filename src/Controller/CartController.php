@@ -22,8 +22,26 @@ class CartController extends AbstractController
      */
     public function index(CartManager $cartManager)
     {
+        $cart = $cartManager->getCart();
+        $cartItems = array();
+        $total = 0;
+        foreach ($cart as $productId => $quantity) {
+            $product = $this->getDoctrine()->getRepository(Product::class)->find($productId);
+            if (!empty($product)) {
+                $cartItems[$productId] = [
+                    'id'          => $productId,
+                    'name'        => $product->getName(),
+                    'description' => $product->getDescription(),
+                    'price'       => $product->getPrice(),
+                    'quantity'    => $quantity
+                ];
+                $total += $product->getPrice() * $quantity;
+            }
+        }
+
         return $this->render('cart/index.html.twig', [
-            'cart' => $cartManager->getCart()
+            'cartItems' => $cartItems,
+            'total'     => $total
         ]);
     }
 
