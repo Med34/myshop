@@ -37,4 +37,15 @@ class CartManager
         }
         $this->setCart($cart);
     }
+
+    public function getQtyProducts()
+    {
+        $cart = $this->getCart();
+        $totalProducts = 0;
+        foreach ($cart as $cartItem) {
+            $totalProducts += $cartItem;
+        }
+
+        return $totalProducts;
+    }
 }

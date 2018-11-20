@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Product;
+use App\Services\CartManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -13,14 +14,15 @@ class ProductController extends AbstractController
     /**
      * @Route("/", name="product.index")
      */
-    public function index()
+    public function index(CartManager $cartManager)
     {
         // Get all products sort by name ascending.
         $repository = $this->getDoctrine()->getRepository(Product::class);
         $products = $repository->findAllSortByName();
 
         return $this->render('product/index.html.twig', [
-            'products' => $products,
+            'products'    => $products,
+            'qtyProducts' => $cartManager->getQtyProducts()
         ]);
     }
 
