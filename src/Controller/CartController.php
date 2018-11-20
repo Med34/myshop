@@ -83,7 +83,7 @@ class CartController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $cartManager->addItemToCart($cartItem);
-            $this->addFlash('success', 'Product add to cart');
+            $this->addFlash('success', 'The product has been added to your cart');
         }
 
         return $this->redirectToRoute('cart.index');
