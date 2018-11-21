@@ -13,6 +13,10 @@ class ProductController extends AbstractController
 {
     /**
      * @Route("/", name="product.index")
+     *
+     * @param CartManager $cartManager The service to manage cart.
+     *
+     * @return Response
      */
     public function index(CartManager $cartManager)
     {
@@ -27,11 +31,11 @@ class ProductController extends AbstractController
     }
 
     /**
+     * @Route("/product/{id}", name="product.show")
+     *
      * @param $id Product identifier
      *
      * @return \Symfony\Component\HttpFoundation\Response
-     *
-     * @Route("/product/{id}", name="product.show")
      */
     public function show($id) : Response
     {

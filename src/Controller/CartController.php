@@ -46,7 +46,7 @@ class CartController extends AbstractController
     }
 
     /**
-     * Display the form to add a product with its quantity.
+     * Display the form to add a CartItem object in the cart.
      *
      * @param Product $product Product to add.
      *
@@ -58,7 +58,7 @@ class CartController extends AbstractController
         $cartItem->setProductId($product->getId());
 
         $form = $this->createForm(AddItemType::class, $cartItem, [
-            'action' => $this->generateUrl('cart_add_item'),
+            'action' => $this->generateUrl('cart.addItem'),
             'method' => 'POST'
         ]);
 
@@ -68,7 +68,7 @@ class CartController extends AbstractController
     }
 
     /**
-     * @Route("/cart/addItem", name="cart_add_item", methods={"POST"})
+     * @Route("/cart/addItem", name="cart.addItem", methods={"POST"})
      *
      * @param Request $request
      * @param CartManager $cartManager The service to manage cart.
